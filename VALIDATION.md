@@ -14,3 +14,11 @@
 
 Standalone compilation does not validate Unity editor generation or VRChat playback. Treat this as an initial preview and test generated prefabs before relying on them.
 
+
+## VR display correction — 2026-09-27
+
+- Capture cameras explicitly use Mono (StereoTargetEyeMask.None); generated capture textures use VRTextureUsage.None.
+- The stereo shader maps both eyes through their projection matrices into a common viewing direction, including canted-eye views.
+- Unity rendering checks passed for both eyes across four symmetric/asymmetric/canted projection cases, and for normal/photo-camera visibility modes.
+- Production shader import and the 13 capture-camera settings in the private test prefabs passed.
+- These are simulated eye-projection rendering checks, not an actual headset or VRChat playback test. User confirmation in VR remains pending.
